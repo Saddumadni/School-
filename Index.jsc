@@ -1,0 +1,173 @@
+import React, { useState } from 'react';
+import './App.css';
+
+const App = () => {
+  const [activeSection, setActiveSection] = useState('home');
+
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'about':
+        return <AboutUs />;
+      case 'academics':
+        return <Academics />;
+      case 'admissions':
+        return <Admissions />;
+      case 'faculty':
+        return <Faculty />;
+      case 'students':
+        return <Students />;
+      case 'gallery':
+        return <Gallery />;
+      case 'contact':
+        return <ContactUs />;
+      default:
+        return <Home />;
+    }
+  };
+
+  return (
+    <div className="App">
+      <Header setActiveSection={setActiveSection} />
+      {renderSection()}
+      <Footer />
+    </div>
+  );
+};
+
+const Header = ({ setActiveSection }) => {
+  return (
+    <header>
+      <h1>School Name</h1>
+      <nav>
+        <button onClick={() => setActiveSection('home')}>Home</button>
+        <button onClick={() => setActiveSection('about')}>About Us</button>
+        <button onClick={() => setActiveSection('academics')}>Academics</button>
+        <button onClick={() => setActiveSection('admissions')}>Admissions</button>
+        <button onClick={() => setActiveSection('faculty')}>Faculty</button>
+        <button onClick={() => setActiveSection('students')}>Students</button>
+        <button onClick={() => setActiveSection('gallery')}>Gallery</button>
+        <button onClick={() => setActiveSection('contact')}>Contact Us</button>
+      </nav>
+    </header>
+  );
+};
+
+const Home = () => {
+  return (
+    <div>
+      <h2>Welcome to Our School</h2>
+      <p>Brief description of the school.</p>
+      <div className="carousel">
+        {/* Carousel implementation would go here */}
+        <h3>Key Highlights</h3>
+      </div>
+      <div className="quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+const AboutUs = () => {
+  return (
+    <div>
+      <h2>About Us</h2>
+      <p>History, vision, mission, and values of the school.</p>
+      <h3>Message from the Principal</h3>
+      <p>Message text here.</p>
+      <h3>Infrastructure and Facilities</h3>
+      <p>Details of infrastructure and facilities.</p>
+    </div>
+  );
+};
+
+const Academics = () => {
+  return (
+    <div>
+      <h2>Academics</h2>
+      <p>Curriculum offered and subjects taught.</p>
+      <h3>Teaching Methodologies</h3>
+      <p>Details about teaching methodologies and resources.</p>
+    </div>
+  );
+};
+
+const Admissions = () => {
+  return (
+    <div>
+      <h2>Admissions</h2>
+      <p>Admission process and criteria.</p>
+      <a href="/admission-form.pdf" download>Download Admission Form</a>
+      <h3>Important Dates</h3>
+      <p>Dates and deadlines for admission.</p>
+    </div>
+  );
+};
+
+const Faculty = () => {
+  return (
+    <div>
+      <h2>Faculty</h2>
+      <p>Profiles of teaching and administrative staff.</p>
+      <h3>Qualifications and Experience</h3>
+      <p>Details about the qualifications and experience.</p>
+    </div>
+  );
+};
+
+const Students = () => {
+  return (
+    <div>
+      <h2>Students</h2>
+      <p>Information about student life, extracurricular activities, and clubs.</p>
+      <h3>Achievements</h3>
+      <p>Achievements and accolades of the students.</p>
+    </div>
+  );
+};
+
+const Gallery = () => {
+  return (
+    <div>
+      <h2>Gallery</h2>
+      <p>Photo and video gallery showcasing school events and activities.</p>
+    </div>
+  );
+};
+
+const ContactUs = () => {
+  return (
+    <div>
+      <h2>Contact Us</h2>
+      <p>School Address: 123 School St, Education City</p>
+      <p>Contact Number: (123) 456-7890</p>
+      <p>Email: contact@school.com</p>
+      <h3>Contact Form</h3>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <h3>Location</h3>
+      <div>
+        {/* Google Maps integration would go here */}
+      </div>
+    </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer>
+      <p>&copy; {new Date().getFullYear()} School Name. All rights reserved.</p>
+    </footer>
+  );
+};
+
+export default App;
